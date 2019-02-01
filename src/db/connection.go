@@ -5,29 +5,31 @@ import (
 )
 
 type ConnectionVar string
+
 const (
-	Host ConnectionVar = "DB_HOST"
-	Name ConnectionVar = "DB_NAME"
+	Host     ConnectionVar = "DB_HOST"
+	Name     ConnectionVar = "DB_NAME"
 	Password ConnectionVar = "DB_PASSWORD"
-	Port ConnectionVar = "DB_PORT"
-	User ConnectionVar = "DB_USER"
-	)
+	Port     ConnectionVar = "DB_PORT"
+	User     ConnectionVar = "DB_USER"
+)
 
 type connProp string
+
 const (
-	host connProp = "host"
-	name connProp = "dbname"
+	host     connProp = "host"
+	name     connProp = "dbname"
 	password connProp = "password"
-	port connProp = "port"
-	user connProp = "user"
+	port     connProp = "port"
+	user     connProp = "user"
 )
 
 type DatabaseVars struct {
-	Host string
-	Name string
+	Host     string
+	Name     string
 	Password string
-	Port string
-	User string
+	Port     string
+	User     string
 }
 
 func (dv *DatabaseVars) ConnectionString() string {
@@ -63,7 +65,7 @@ func (dv *DatabaseVars) strComp(p connProp, cs string, pv string) string {
 		if cs == "" {
 			v += string(p) + "=" + pv
 		} else {
-			v += " "  + string(p) + "=" + pv
+			v += " " + string(p) + "=" + pv
 		}
 	}
 

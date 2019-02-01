@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/greenac/delilah/logger"
 	"github.com/greenac/s3upload/file"
 	"github.com/joho/godotenv"
-	"github.com/greenac/delilah/logger"
 	"os"
 )
 
@@ -32,4 +32,5 @@ func main() {
 		}
 
 		file.GetFiles(bp, bkp)
-	}}
+	}
+}
