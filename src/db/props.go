@@ -12,6 +12,7 @@ const (
 	name     connProp = "dbname"
 	password connProp = "password"
 	port     connProp = "port"
+	ssl connProp = "sslmode"
 	user     connProp = "user"
 )
 
@@ -20,6 +21,7 @@ type Props struct {
 	Name     string
 	Password string
 	Port     string
+	Ssl string
 	User     string
 }
 
@@ -29,11 +31,16 @@ func (pr *Props) Setup(props map[helpers.ConnectionVar]string) {
 	pr.Password = props[helpers.Password]
 	pr.Port = props[helpers.Port]
 	pr.User = props[helpers.User]
+	pr.Ssl = props[helpers.Ssl]
+
+	if pr.Ssl == "" {
+		pr.Ssl = "disable"
+	}
 }
 
 func (pr *Props) ConnectionString() string {
 	cs := ""
-	for _, p := range []connProp{user, password, port, name, host} {
+	for _, p := range []connProp{user, password, port, name, host, ssl} {
 		prop := ""
 		switch p {
 		case host:
@@ -44,6 +51,8 @@ func (pr *Props) ConnectionString() string {
 			prop = pr.Password
 		case port:
 			prop = pr.Port
+		case ssl:
+			prop = pr.Ssl
 		case user:
 			prop = pr.User
 		default:
