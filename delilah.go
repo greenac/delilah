@@ -13,7 +13,14 @@ func main() {
 		logger.Error("Error loading .env file")
 	}
 
-	dv := db.DatabaseVars{}
-	dv.Setup(helpers.ConnEnvVars())
-	logger.Log(dv.ConnectionString())
+	pr := db.Props{}
+	pr.Setup(helpers.ConnEnvVars())
+
+	cn := db.Connection{Props: &pr}
+	rows, err := cn.FindById(1, "Users"); if err != nil {
+		logger.Error("pinche:", err)
+		panic(err)
+	}
+
+	logger.Log("got rows:", *rows)
 }
