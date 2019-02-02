@@ -13,7 +13,7 @@ func main() {
 		logger.Error("Error loading .env file")
 	}
 
-	dv := db.DatabaseVars{}
-	dv.Setup(helpers.ConnEnvVars())
-	logger.Log(dv.ConnectionString())
+	pr := db.Props{}
+	pr.Setup(helpers.ConnEnvVars())
+	logger.Log(pr.ConnectionString())
 }
