@@ -2,16 +2,7 @@ package db
 
 import (
 	"github.com/greenac/artemis/logger"
-)
-
-type ConnectionVar string
-
-const (
-	Host     ConnectionVar = "DB_HOST"
-	Name     ConnectionVar = "DB_NAME"
-	Password ConnectionVar = "DB_PASSWORD"
-	Port     ConnectionVar = "DB_PORT"
-	User     ConnectionVar = "DB_USER"
+	"github.com/greenac/delilah/src/helpers"
 )
 
 type connProp string
@@ -30,6 +21,14 @@ type DatabaseVars struct {
 	Password string
 	Port     string
 	User     string
+}
+
+func (dv *DatabaseVars) Setup(props map[helpers.ConnectionVar]string) {
+	dv.Host = props[helpers.Host]
+	dv.Name = props[helpers.Name]
+	dv.Password = props[helpers.Password]
+	dv.Port = props[helpers.Port]
+	dv.User = props[helpers.User]
 }
 
 func (dv *DatabaseVars) ConnectionString() string {
