@@ -15,5 +15,12 @@ func main() {
 
 	pr := db.Props{}
 	pr.Setup(helpers.ConnEnvVars())
-	logger.Log(pr.ConnectionString())
+
+	cn := db.Connection{Props: &pr}
+	rows, err := cn.FindById(1, "Users"); if err != nil {
+		logger.Error("pinche:", err)
+		panic(err)
+	}
+
+	logger.Log("got rows:", *rows)
 }

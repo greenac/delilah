@@ -58,7 +58,7 @@ func (pr *Props) ConnectionString() string {
 	return cs
 }
 
-func (dv *Props) strComp(p connProp, cs string, pv string) string {
+func (pr *Props) strComp(p connProp, cs string, pv string) string {
 	v := ""
 	if pv != "" {
 		if cs == "" {
