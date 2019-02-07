@@ -11,7 +11,7 @@ const (
 	Name     ConnectionVar = "DB_NAME"
 	Password ConnectionVar = "DB_PASSWORD"
 	Port     ConnectionVar = "DB_PORT"
-	Ssl     ConnectionVar = "DB_SSL"
+	Ssl      ConnectionVar = "DB_SSL"
 	User     ConnectionVar = "DB_USER"
 )
 
@@ -21,7 +21,7 @@ func ConnEnvVars() map[ConnectionVar]string {
 		Name:     os.Getenv(string(Name)),
 		Password: os.Getenv(string(Password)),
 		Port:     os.Getenv(string(Port)),
-		Ssl:     os.Getenv(string(Ssl)),
+		Ssl:      os.Getenv(string(Ssl)),
 		User:     os.Getenv(string(User)),
 	}
 }
