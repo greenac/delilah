@@ -8,13 +8,14 @@ import (
 )
 
 type Type string
+
 const (
 	Postgres Type = "postgres"
 )
 
 type Connection struct {
 	Props *Props
-	Db *sql.DB
+	Db    *sql.DB
 }
 
 func (c *Connection) Connect() error {
@@ -24,7 +25,8 @@ func (c *Connection) Connect() error {
 
 	logger.Log("passed props")
 
-	db, err := sql.Open(string(Postgres), c.Props.ConnectionString()); if err != nil {
+	db, err := sql.Open(string(Postgres), c.Props.ConnectionString())
+	if err != nil {
 		logger.Error("`Connection::Connect` creating connection:", err)
 		return err
 	}
@@ -39,7 +41,8 @@ func (c *Connection) FindById(id int, table string) (*sql.Rows, error) {
 
 	logger.Log("in find by id")
 
-	rows, err := c.Db.Query("SELECT * FROM ? WHERE id = ?", table, id); if err != nil {
+	rows, err := c.Db.Query("SELECT * FROM ? WHERE id = ?", table, id)
+	if err != nil {
 		logger.Error("`Connection:FindById` making query:", err)
 		return nil, err
 	}
@@ -48,4 +51,3 @@ func (c *Connection) FindById(id int, table string) (*sql.Rows, error) {
 
 	return rows, nil
 }
-

@@ -12,7 +12,7 @@ const (
 	name     connProp = "dbname"
 	password connProp = "password"
 	port     connProp = "port"
-	ssl connProp = "sslmode"
+	ssl      connProp = "sslmode"
 	user     connProp = "user"
 )
 
@@ -21,7 +21,7 @@ type Props struct {
 	Name     string
 	Password string
 	Port     string
-	Ssl string
+	Ssl      string
 	User     string
 }
 
